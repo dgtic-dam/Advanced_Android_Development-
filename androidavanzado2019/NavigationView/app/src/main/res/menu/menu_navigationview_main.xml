@@ -22,7 +22,7 @@
             <item android:id="@+id/aboutItem"
                 android:title="Acerca De"/>
             <item android:id="@+id/privacyItem"
-                android:title="@+id/privacyItem"/>
+                android:title="Privacidad"/>
         </menu>
     </item>
 </menu>
