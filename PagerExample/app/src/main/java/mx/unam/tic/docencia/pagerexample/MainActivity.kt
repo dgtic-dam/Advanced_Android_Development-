@@ -5,8 +5,13 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
+import mx.unam.tic.docencia.pagerexample.adapter.MainAdapter
+import mx.unam.tic.docencia.pagerexample.fragments.DetailFragment
+import mx.unam.tic.docencia.pagerexample.fragments.FavoritesFragment
+import mx.unam.tic.docencia.pagerexample.fragments.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +24,9 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+        val mainAdapter=MainAdapter(initPageTitles(), initFragments(), supportFragmentManager)
+        mainViewPager.adapter=mainAdapter
+        mainTabLayout.setupWithViewPager(mainViewPager)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -35,5 +43,18 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun initFragments():ArrayList<Fragment>{
+        return arrayListOf(HomeFragment.newInstance(),
+            DetailFragment.newInstance(),
+            FavoritesFragment.newInstance(),
+            HomeFragment.newInstance(),
+            DetailFragment.newInstance(),
+            FavoritesFragment.newInstance())
+    }
+
+    private fun initPageTitles():ArrayList<String>{
+        return arrayListOf("Inicio", "Detalle", "Favoritos","Inicio2", "Detalle2", "Favoritos2")
     }
 }

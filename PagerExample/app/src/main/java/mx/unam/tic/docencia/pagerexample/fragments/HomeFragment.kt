@@ -1,6 +1,5 @@
 package mx.unam.tic.docencia.pagerexample.fragments
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,19 +8,26 @@ import android.view.ViewGroup
 
 import mx.unam.tic.docencia.pagerexample.R
 
-
+private const val ARG_TITLE = "title"
+private const val ARG_COLOR = "color"
 
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
 class HomeFragment : Fragment() {
 
+    private lateinit var title:String
+    private lateinit var color:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        arguments.let {
+            title=it!!.getString("title","PageExample")
+            color=it!!.getString("color","FFFFFF")
+        }
     }
 
     override fun onCreateView(
@@ -45,5 +51,12 @@ class HomeFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() = HomeFragment()
+
+        @JvmStatic
+        fun newInstance(title: String, color:String)=
+            HomeFragment().arguments.apply{
+                this?.putString(ARG_TITLE, title)
+                this?.putString(ARG_COLOR, color)
+        }
     }
 }

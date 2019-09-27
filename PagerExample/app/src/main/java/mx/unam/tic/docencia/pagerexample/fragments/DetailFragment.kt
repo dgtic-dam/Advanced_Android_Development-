@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_main.*
 
 import mx.unam.tic.docencia.pagerexample.R
-
 
 /**
  * A simple [Fragment] subclass.
@@ -16,7 +16,6 @@ import mx.unam.tic.docencia.pagerexample.R
  * create an instance of this fragment.
  */
 class DetailFragment : Fragment() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +29,6 @@ class DetailFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
-
 
     companion object {
         /**
