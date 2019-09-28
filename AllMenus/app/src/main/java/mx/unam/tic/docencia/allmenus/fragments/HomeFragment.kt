@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import mx.unam.tic.docencia.bottomnavigationexample.R
+import mx.unam.tic.docencia.allmenus.R
 import mx.unam.tic.docencia.pagerexample.listener.OnChangeColorBarTabSelected
 
 private const val ARG_TITLE = "title"

@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_main.*
-import mx.unam.tic.docencia.bottomnavigationexample.R
+import mx.unam.tic.docencia.allmenus.R
 
 /**
  * A simple [Fragment] subclass.
