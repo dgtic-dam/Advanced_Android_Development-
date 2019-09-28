@@ -26,7 +26,7 @@
             app:tabBackground="@color/colorTab"
             app:tabGravity="fill"
             app:tabMode="scrollable"
-            app:tabIndicatorColor="@color/colorAccent"
+            app:tabIndicatorColor="@color/colorTabLine"
             app:tabTextColor="#FFFFFF"/>
     <!--app:tabMode="scrollable" para que tenga scroll el tablayout  -->
         <!--app:tabMode="fixed" para que se ajuste  -->

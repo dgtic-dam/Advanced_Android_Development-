@@ -1,12 +1,13 @@
 package mx.unam.tic.docencia.pagerexample.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import mx.unam.tic.docencia.pagerexample.R
+import mx.unam.tic.docencia.pagerexample.listener.OnChangeColorBarTabSelected
 
 private const val ARG_TITLE = "title"
 private const val ARG_COLOR = "color"
@@ -21,6 +22,20 @@ class HomeFragment : Fragment() {
 
     private lateinit var title:String
     private lateinit var color:String
+    private lateinit var onChangeColorBarTabSelected: OnChangeColorBarTabSelected
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is OnChangeColorBarTabSelected){
+            onChangeColorBarTabSelected=context
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(onChangeColorBarTabSelected!=null)
+            onChangeColorBarTabSelected.OnChangeColorBar(title,color)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +69,11 @@ class HomeFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(title: String, color:String)=
-            HomeFragment().arguments.apply{
-                this?.putString(ARG_TITLE, title)
-                this?.putString(ARG_COLOR, color)
+            HomeFragment().apply{
+                arguments=Bundle().apply{
+                    this?.putString(ARG_TITLE, title)
+                    this?.putString(ARG_COLOR, color)
+                }
         }
     }
 }

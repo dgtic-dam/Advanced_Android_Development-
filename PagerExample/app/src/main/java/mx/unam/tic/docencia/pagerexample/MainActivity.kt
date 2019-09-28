@@ -1,5 +1,7 @@
 package mx.unam.tic.docencia.pagerexample
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +14,9 @@ import mx.unam.tic.docencia.pagerexample.adapter.MainAdapter
 import mx.unam.tic.docencia.pagerexample.fragments.DetailFragment
 import mx.unam.tic.docencia.pagerexample.fragments.FavoritesFragment
 import mx.unam.tic.docencia.pagerexample.fragments.HomeFragment
+import mx.unam.tic.docencia.pagerexample.listener.OnChangeColorBarTabSelected
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnChangeColorBarTabSelected {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +48,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun OnChangeColorBar(title: String, colorBar: String) {
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor(colorBar)))
+        supportActionBar?.title=title
+    }
+
     private fun initFragments():ArrayList<Fragment>{
-        return arrayListOf(HomeFragment.newInstance(),
+        return arrayListOf(HomeFragment.newInstance("Inicio", "#000000"),
             DetailFragment.newInstance(),
             FavoritesFragment.newInstance(),
-            HomeFragment.newInstance(),
+            HomeFragment.newInstance("Inicio2", "#DEDEDE"),
             DetailFragment.newInstance(),
             FavoritesFragment.newInstance())
     }
