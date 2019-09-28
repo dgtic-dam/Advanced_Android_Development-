@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_item"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/detail_item"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Detalle" />
+    <item
+        android:id="@+id/favorite_item"
+        android:icon="@android:drawable/btn_star"
+        android:title="Favoritos" />
+    <item
+        android:id="@+id/home_two_item"
+        android:icon="@android:drawable/stat_notify_sync"
+        android:title="Inicio Dos" />
+</menu>

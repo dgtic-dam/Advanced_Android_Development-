@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<group android:checkableBehavior="single">
+
+
+    <item
+        android:id="@+id/homeItem"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/favoriteItem"
+        android:title="Favoritos" />
+    <item
+        android:id="@+id/configurationItem"
+        android:title="Configuracion" />
+</group>
+    <item
+        android:id="@+id/moreOptionsItems"
+        android:title="Otras opciones">
+        <menu>
+            <item android:id="@+id/aboutItem"
+                android:title="Acerca De"/>
+            <item android:id="@+id/privacyItem"
+                android:title="Privacidad"/>
+        </menu>
+    </item>
+</menu>
