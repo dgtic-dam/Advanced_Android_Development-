@@ -31,9 +31,15 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onStart() {
+    /*override fun onStart() {
         super.onStart()
         if(onChangeColorBarTabSelected!=null)
+            onChangeColorBarTabSelected.OnChangeColorBar(title,color)
+    }*/
+
+    override fun onResume() {
+        super.onResume()
+        if(onChangeColorBarTabSelected!=null && isVisible)
             onChangeColorBarTabSelected.OnChangeColorBar(title,color)
     }
 
