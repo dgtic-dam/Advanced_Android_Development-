@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 
 const val BEHAVIOR_SET_USER_VISIBLE_HINT=0
 
-class MainAdapter(val fragments:ArrayList<Fragment>,fm:FragmentManager):
+class MainAdapter(val titlesPage:ArrayList<String>, val fragments:ArrayList<Fragment>,fm:FragmentManager):
 
 // FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) { //3 elementos
 
@@ -22,7 +22,7 @@ class MainAdapter(val fragments:ArrayList<Fragment>,fm:FragmentManager):
         return fragments.size
     }
 
- /*   override fun getPageTitle(position: Int): CharSequence? {
+   override fun getPageTitle(position: Int): CharSequence? {
         return titlesPage[position]
-    }*/
+    }
 }
