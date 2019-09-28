@@ -20,7 +20,7 @@ class SecondActivity : AppCompatActivity(), OnChangeColorBarTabSelected {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-       // setSupportActionBar(secondtoolbar)
+        setSupportActionBar(secondtoolbar)
 
         val mainAdapter= MainAdapter(initPageTitles(), initFragments(), supportFragmentManager)
         secondViewPager.adapter=mainAdapter
