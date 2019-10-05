@@ -31,4 +31,25 @@ class ServiceVolley:MoviesListServiceInterface {
         VolleyServicesExampleApplication.instance?.addToRequestQueue(jsonObject)
     }
 
+    override fun post(
+        path: String,
+        params: JSONObject?,
+        completionHandler: (response: JSONObject?) -> Unit
+    ) {
+        val jsonObject=object : JsonObjectRequest(Method.GET,path,params,
+            Response.Listener { response ->
+                completionHandler(response)
+            },Response.ErrorListener { error ->
+                completionHandler(null)
+            }){
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers=HashMap<String, String>()
+                headers.put("Content-Type","application/json")
+                return headers
+            }
+        }
+        VolleyServicesExampleApplication.instance?.addToRequestQueue(jsonObject)
+    }
+
 }

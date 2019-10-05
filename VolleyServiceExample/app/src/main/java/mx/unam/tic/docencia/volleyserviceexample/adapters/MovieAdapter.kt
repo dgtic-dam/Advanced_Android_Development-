@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 import mx.unam.tic.docencia.volleyserviceexample.R
 import mx.unam.tic.docencia.webserviceexample.listener.OnMovieClickListener
@@ -27,7 +28,8 @@ class MovieAdapter (val context: Context,val search:ArrayList<Search>):
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.posterImageView.setImageResource(R.mipmap.ic_launcher)
+        Picasso.get().load(search[position].poster).into(holder.posterImageView)
+        //holder.posterImageView.setImageResource(R.mipmap.ic_launcher)
         holder.titleTextView.text=search[position].title
         holder.yearTextView.text=search[position].year
         holder.setImdbID(search[position].imdbID)

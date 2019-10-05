@@ -1,17 +1,19 @@
 package mx.unam.tic.docencia.volleyserviceexample
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import mx.unam.tic.docencia.volleyserviceexample.services.APIController
 import mx.unam.tic.docencia.volleyserviceexample.services.ServiceVolley
+import mx.unam.tic.docencia.volleyserviceexample.utils.NetworkConnection
 import mx.unam.tic.docencia.webserviceexample.adapters.MovieAdapter
 import mx.unam.tic.docencia.webserviceexample.models.MoviesList
 
@@ -26,12 +28,15 @@ class MainActivity : AppCompatActivity() {
         val apiController=APIController(service)
 
         initView()
-        apiController.get("http://www.omdbapi.com/?apikey=3e1ff16&s=avengers", null,{ response ->
-            val moviesList=Gson().fromJson<MoviesList>(response.toString(),MoviesList::class.java)
-            setMovieList(moviesList)
-            movieProgressBar.visibility=View.GONE
-        })
-
+        if (NetworkConnection(this).isNetworkConnected()){
+            apiController.get("http://www.omdbapi.com/?apikey=3e1ff16&s=avengers", null,{ response ->
+                val moviesList=Gson().fromJson<MoviesList>(response.toString(),MoviesList::class.java)
+                setMovieList(moviesList)
+                movieProgressBar.visibility=View.GONE
+            })
+        }else{
+            Toast.makeText(this,"No está conectado", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -62,9 +67,9 @@ class MainActivity : AppCompatActivity() {
     fun setMovieList(moviesList: MoviesList){
         val movieAdapter= MovieAdapter(this,moviesList.search)
         movieAdapter.setOnMovieClickListener { imdbID ->
-         /*   val detailIntent= Intent(this,DetailActivity::class.java)
+            val detailIntent= Intent(this,DetailActivity::class.java)
             detailIntent.putExtra("idMovie",imdbID)
-            startActivity(detailIntent)*/
+            startActivity(detailIntent)
         }
         moviesRecyclerView.adapter=movieAdapter
     }
