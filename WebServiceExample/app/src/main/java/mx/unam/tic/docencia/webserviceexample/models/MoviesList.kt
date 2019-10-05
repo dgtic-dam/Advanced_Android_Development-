@@ -7,7 +7,7 @@ data class MoviesList(
     @SerializedName("Response")
     val response: String,
     @SerializedName("Search")
-    val search: List<Search>,
+    val search: ArrayList<Search>,
     @SerializedName("totalResults")
     val totalResults: String
 )
