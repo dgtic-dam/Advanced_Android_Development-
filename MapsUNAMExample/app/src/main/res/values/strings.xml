@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MapsUNAMExample</string>
     <string name="action_settings">Settings</string>
+    <string name="maps_api_key">AIzaSyDsJgfliIgxpO9BW1LVqbC49By6xBFnwyQ</string>
+    <string name="title_dialog_gps">Aviso</string>
+    <string name="message_dialog_gps">No tienes permiso para el acceso a la ubicación</string>
 </resources>
