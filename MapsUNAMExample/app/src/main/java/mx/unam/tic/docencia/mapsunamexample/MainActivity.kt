@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
     private var locationManager:LocationManager?=null
     private var locationCallback:LocationCallback= object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult?) {
-            super.onLocationResult(p0)
+            onLocationResult(p0?.lastLocation)
         }
     }
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -105,12 +105,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
         if (requestCode==PERMISSION_GPS_GRANTED){
             if (grantResults.size>0){
                 if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    //TO DO
+                    startLocation()
                 }else{
-                    //TO DO Cancel permission
+                    Toast.makeText(this, "Requiere aceptar los permisos",
+                    Toast.LENGTH_LONG).show()
                 }
             }else{
-                //TO DO Cancel permission
+                Toast.makeText(this, "Requiere aceptar los permisos",
+                    Toast.LENGTH_LONG).show()
             }
         }else{
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -140,7 +142,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
         showLocationMap(p0)
     }
 
-    fun checkPermissions(){
+    fun checkPermissions():Boolean{
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
             && ContextCompat.checkSelfPermission(this,
@@ -155,11 +157,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
                     Toast.makeText(this, "Tienes que aceptar", Toast.LENGTH_LONG).show()
                 }
                 dialogGPS.show(supportFragmentManager, "WARNING-GPS")
+                return false
             }else{
                 acceptPermission()
+                return false
             }
         }else{
-            startLocation()
+            return true
         }
     }
 
@@ -188,12 +192,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
     }
 
     fun startLocation(){
-        fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(this)
-        location=getLastLocation()
-        if (location!=null)
-            showLocationMap(location)
-        else
-            initLocation()
+        if (isLocationEnabled){
+            fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(this)
+            location=getLastLocation()
+            if (location!=null)
+                showLocationMap(location)
+            else
+                initLocation()
+        }else{
+            Toast.makeText(this, "Requiere habilitar el GPS",
+                Toast.LENGTH_LONG).show()
+        }
     }
 
     fun getLastLocation():Location?{
