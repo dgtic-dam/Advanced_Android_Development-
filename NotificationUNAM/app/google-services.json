@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "106000522013",
+    "firebase_url": "https://unamnotification.firebaseio.com",
+    "project_id": "unamnotification",
+    "storage_bucket": "unamnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106000522013:android:17eda614fc15886f949ff4",
+        "android_client_info": {
+          "package_name": "mx.unam.tic.docencia.notificationunam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106000522013-ju9p87pb40qe7spfpdpgu5fblml4fm9c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.unam.tic.docencia.notificationunam",
+            "certificate_hash": "8c3209fc9b389cb945fa3242e0e9b72037db6667"
+          }
+        },
+        {
+          "client_id": "106000522013-8vo60na9sssfose301le2uam12odecvj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB92RNMMzE7dAXUw-AbwGFqKdkdZvJ324I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106000522013-8vo60na9sssfose301le2uam12odecvj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
