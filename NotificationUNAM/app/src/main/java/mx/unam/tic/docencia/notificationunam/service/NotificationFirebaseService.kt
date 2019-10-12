@@ -26,6 +26,7 @@ class NotificationFirebaseService : FirebaseMessagingService() {
 
     override fun onMessageReceived(p0: RemoteMessage) { //Se ejecuta cuando se recibe una noificación
         super.onMessageReceived(p0)
+        sendNotification(p0)
     }
 
     private fun sendNotification(remoteMessage: RemoteMessage){

@@ -1,10 +1,13 @@
 package mx.unam.tic.docencia.notificationunam
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,5 +38,22 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun getFirebaseToken():String?{
+        var tokenUser:String?=""
+        FirebaseInstanceId.getInstance()
+            .instanceId
+            .addOnCompleteListener(
+                OnCompleteListener {
+                    if (!it.isSuccessful){
+                        Log.w("[ERRORFB]","No se obtuvo e Token")
+                        return@OnCompleteListener
+                    }
+                    tokenUser=it.result?.token
+                    return@OnCompleteListener
+                }
+            )
+        return tokenUser
     }
 }
