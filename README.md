@@ -6,7 +6,7 @@
 
 # Proyecto FINAL
 
-* Integración de Material Design
+* Integración de Material Design, al menos navigation view y toolbar
 * Fragments
 * Consumo de Servicios Web
 * Menú
